@@ -47,14 +47,14 @@ function rentCars(daysRented, whichCar){
 }
 
 function displayCars(){
-    console.log("\nBelow we will list which cars we have available and their rental prices")
+    console.log("==========================================================\nBelow we will list which cars we have available and their rental prices")
     for(var i = 0;i < companyCars.length; i++){
 		console.log((i+1) + ": " + companyCars[i].company + " " + companyCars[i].name + " : $" + companyCars[i].rent + " per day")
 	}
-    rl.question("\nWhich Car would you like to rent? (Enter the number)\n-", (answer) => {
+    rl.question("==========================================================\nWhich Car would you like to rent? (Enter the number)\n-", (answer) => {
         whichCar = parseInt(answer)
         
-        rl.question("How many Days would you like to rent\n-", (answer) => {
+        rl.question("==========================================================\nHow many Days would you like to rent\n-", (answer) => {
             daysRented = parseInt(answer)
             rentCars(daysRented,whichCar)
           });
@@ -64,11 +64,11 @@ function displayCars(){
 
 function returnCar(){
     if(customerCars.length > 0){
-        console.log("Below we will list which cars you currently are renting")
+        console.log("==========================================================\nBelow we will list which cars you currently are renting")
         for(var i = 0;i < customerCars.length; i++){
 		    console.log((i+1) + ": " + customerCars[i].company + " " + customerCars[i].name + " for " + customerCars[i].days + " days")
 	    }
-        rl.question("Which Car would you like to return? (Enter the number)\n", (answer) => {
+        rl.question("==========================================================\nWhich Car would you like to return? (Enter the number)\n", (answer) => {
             whichCar = parseInt(answer)
             if(answer > 0 && answer <= companyCars.length){
                 companyCars.push(customerCars[whichCar-1])
@@ -81,20 +81,20 @@ function returnCar(){
       });
     }
     else{
-        console.log("You dont have any cars currently rented")
+        console.log("==========================================================\nYou dont have any cars currently rented")
         main();
     }
 
 }
 
 function checkOut(){
-    console.log("Here are all the cars you are going to rent")
+    console.log("==========================================================\nHere are all the cars you are going to rent")
     let totalCost = 0;
     for(var i = 0;i < customerCars.length; i++){
 		console.log((i+1) + ": " + customerCars[i].company + " " + customerCars[i].name + " for " + customerCars[i].days + " days")
         totalCost += (parseInt(customerCars[i].days) * parseInt(customerCars[i].rent))
 	}
-    console.log("\nIn Total it will cost you $" + totalCost + " to rent the car(s)");
+    console.log("==========================================================\nIn Total it will cost you $" + totalCost + " to rent the car(s)");
     exit()
 
 }
@@ -121,7 +121,7 @@ function CarRentalService(){
 function main(){
     let whichCar
     let daysRented
-	console.log("\nHello and welcome to our companies rental car program");
+	console.log("==========================================================\nHello and welcome to our companies rental car program\n")
     CarRentalService()
 }
 
