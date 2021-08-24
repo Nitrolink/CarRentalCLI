@@ -52,10 +52,10 @@ function displayCars(){
 		console.log((i+1) + ": " + companyCars[i].company + " " + companyCars[i].name + " : $" + companyCars[i].rent + " per day")
 	}
     rl.question("==========================================================\nWhich Car would you like to rent? (Enter the number)\n-", (answer) => {
-        whichCar = parseInt(answer)
+        let whichCar = parseInt(answer)
         
-        rl.question("==========================================================\nHow many Days would you like to rent\n-", (answer) => {
-            daysRented = parseInt(answer)
+        rl.question("==========================================================\nHow many Days would you like to rent\n-", (answer2) => {
+            let daysRented = parseInt(answer2)
             rentCars(daysRented,whichCar)
           });
       });
@@ -69,7 +69,7 @@ function returnCar(){
 		    console.log((i+1) + ": " + customerCars[i].company + " " + customerCars[i].name + " for " + customerCars[i].days + " days")
 	    }
         rl.question("==========================================================\nWhich Car would you like to return? (Enter the number)\n", (answer) => {
-            whichCar = parseInt(answer)
+            let whichCar = parseInt(answer)
             if(answer > 0 && answer <= companyCars.length){
                 companyCars.push(customerCars[whichCar-1])
                 customerCars.splice(whichCar-1,1)
@@ -110,6 +110,7 @@ function CarRentalService(){
                 break;
             case 3:
                 checkOut();
+                break;
             case 4:
                 rl.close()
                 exit();
@@ -119,8 +120,6 @@ function CarRentalService(){
 
 
 function main(){
-    let whichCar
-    let daysRented
 	console.log("==========================================================\nHello and welcome to our companies rental car program\n")
     CarRentalService()
 }
